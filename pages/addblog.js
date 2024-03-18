@@ -12,6 +12,11 @@ const TextEditor = () => {
     console.log(data); // Log the form data
   };
 
+  const handleEditorChange = (content, editor) => {
+    setValue("content", content); // Update the value of the hidden input field
+  };
+
+
   return (
     <Layout>
       <div className="container">
@@ -52,7 +57,7 @@ const TextEditor = () => {
             </div>
           </div>
           <Editor
-            apiKey='7umko255qrrk86q7hqkkygkcizg6vi2fob119obv0vcklt5e'
+            apiKey='Your_TinyMCE_API_Key'
             onInit={(evt, editor) => (editorRef.current = editor)}
             initialValue=""
             init={{
@@ -85,6 +90,11 @@ const TextEditor = () => {
                 "removeformat | help",
               content_style:
                 "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              setup: function (editor) {
+                editor.on('change', function () {
+                  handleEditorChange(editor.getContent(), editor);
+                });
+              }
             }}
           />
           <button type="submit" className="text-center mb-50">
