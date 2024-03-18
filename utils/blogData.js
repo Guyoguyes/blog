@@ -1,7 +1,7 @@
 const data = [
     {
         id: 1,
-        title: "Are You Ready To Go Home After The Sunset View?",
+        title: "Embarking on a Journey: The Harvard Experience",
         excerpt: "Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard roadrunner flapped lynx far that and jeepers giggled far and far",
         img: "news1.png",
         authorTitle: "Joseph",

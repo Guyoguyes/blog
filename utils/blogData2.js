@@ -1,7 +1,7 @@
 const data = [
     {
         id: 1,
-        title: "Helpful Tips for Working from Home as a Freelancer",
+        title: "Embarking on a Journey: The Harvard Experience ",
         excerpt: "Embrace remote work success with these invaluable tips and tricks for freelancers seeking productivity and work-life balance in their home offices",
         img: "img.png",
         category: "Working Tips",

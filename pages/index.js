@@ -1,5 +1,6 @@
+'use client'
 import Head from 'next/head'
-
+import React, {useState, useEffect} from 'react'
 import Layout from "@/components/layout/Layout"
 import Hero1 from "@/components/sections/Hero1"
 import EditorPicked from "@/components/sections/EditorPicked"
@@ -8,7 +9,14 @@ import RecentPosts from "@/components/sections/RecentPosts"
 import Sidebar from "@/components/layout/Sidebar"
 import HotTopic from "@/components/slider/HotTopic"
 
+
 export default function Home() {
+    
+
+    // useEffect(() => {
+        
+    // }, [info]);
+
     return (
         <>
             <Head>

@@ -1,8 +1,23 @@
-
+import { useEffect, useState } from "react";
 import Link from "next/link"
 import data from "@/utils/blogData2"
+import { db } from "@/utils/firebase";
 
 const RecentPosts = () => {
+    const [info, setInfo] = useState();
+ 
+    
+    useEffect(() => {
+        db.collection("posts").get().then((querySnapshot) => {
+            const newData = [];
+            querySnapshot.forEach(element => {
+                const data = element.data();
+                newData.push(data);
+            });
+            setInfo(newData);
+            console.log('fetched Data', info);
+        })
+    }, []);
     return (
         <>
             <h2 className="color-linear d-inline-block mb-10">Recent posts</h2>
@@ -41,3 +56,7 @@ const RecentPosts = () => {
 };
 
 export default RecentPosts;
+
+export const getServerSideProps = () = > {
+    
+}
