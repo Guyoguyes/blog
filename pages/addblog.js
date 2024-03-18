@@ -57,7 +57,7 @@ const TextEditor = () => {
             </div>
           </div>
           <Editor
-            apiKey='Your_TinyMCE_API_Key'
+            apiKey='7umko255qrrk86q7hqkkygkcizg6vi2fob119obv0vcklt5e'
             onInit={(evt, editor) => (editorRef.current = editor)}
             initialValue=""
             init={{
