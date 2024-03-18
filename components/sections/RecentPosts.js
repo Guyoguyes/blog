@@ -56,7 +56,3 @@ const RecentPosts = () => {
 };
 
 export default RecentPosts;
-
-export const getServerSideProps = () = > {
-    
-}
