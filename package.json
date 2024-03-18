@@ -1,0 +1,33 @@
+{
+  "name": "genz",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sass": "sass --watch public/assets/scss/style.scss:public/assets/css/style.css"
+  },
+  "dependencies": {
+    "@syncfusion/ej2-base": "^25.1.35",
+    "@syncfusion/ej2-react-buttons": "^25.1.35",
+    "@syncfusion/ej2-react-dropdowns": "^25.1.35",
+    "@syncfusion/ej2-react-richtexteditor": "^25.1.35",
+    "@tinymce/tinymce-react": "^4.3.2",
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.4",
+    "mui-rte": "^2.0.1",
+    "next": "13.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.51.1",
+    "react-quill": "^2.0.0",
+    "sass": "^1.56.1",
+    "swiper": "^8.4.5",
+    "tailwindcss": "^3.4.1",
+    "typewriter-effect": "^2.19.0",
+    "verbum": "^0.6.2",
+    "wowjs": "^1.1.3"
+  }
+}
