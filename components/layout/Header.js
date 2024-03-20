@@ -51,7 +51,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                                     <li><Link className="active" href="/">Home</Link>
                                     </li>
                                     {/* <li><Link className="color-gray-500" href="/page-contact">Contact</Link></li> */}
-                                    <li><Link className="color-gray-500" href="/addblog">Add</Link></li>
+                                    {/* <li><Link className="color-gray-500" href="/addblog">Add</Link></li> */}
                                 </ul>
                             </nav>
                             <div className={`burger-icon burger-icon-white ${openClass && "burger-close"}`}

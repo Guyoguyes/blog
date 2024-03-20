@@ -1,12 +1,14 @@
 {
-  "name": "genz",
+  "name": "digilearn",
+  "homepage": "http://masomoguide.com/",
   "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
+    "export": "net export",
     "sass": "sass --watch public/assets/scss/style.scss:public/assets/css/style.css"
   },
   "dependencies": {
