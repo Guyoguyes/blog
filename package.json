@@ -1,6 +1,5 @@
 {
   "name": "digilearn",
-  "homepage": "http://masomoguide.com/",
   "version": "3.0.0",
   "private": true,
   "scripts": {
