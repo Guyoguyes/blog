@@ -23,7 +23,7 @@ const RecentPosts = ({posts}) => {
                         <Link href={`/blog/${item.id}`}>
                             <h4 className="mt-15 mb-20 color-white">{item.title}</h4>
                         </Link>
-                            <p className="color-gray-500">{item.content}</p>
+                            {/* <p className="color-gray-500">{item.content}</p> */}
                             <div className="row mt-20">
                                 <div className="col-7">
                                         {item.tags ? (

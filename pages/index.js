@@ -10,7 +10,8 @@ import Sidebar from "@/components/layout/Sidebar"
 import HotTopic from "@/components/slider/HotTopic"
 import { db } from "@/utils/firebase";
 
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, addDoc, getDocs } from 'firebase/firestore';
+import Advertisement from '@/components/sections/Adveristment'
 
 
 
@@ -19,20 +20,20 @@ export default function Home() {
     
     const [posts, setPosts] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userDoc = await db.collection("posts").get();
-                const data = userDoc.docs.map(doc => doc.data());
-                setPosts(data);
-                console.log(data);
-                alert('Data was successfully fetched from cloud firestore! Close this alert and check console for output.');
-            } catch (error) {
-                console.log(error);
-            }
-        };
+    const dbInstance = collection(db, 'posts');
 
-        fetchData();
+    const getPosts = () => {
+        getDocs(dbInstance)
+        .then((data) => {
+            setPosts(data.docs.map((item) => {
+                return { ...item.data(), id: item.id }
+            }));
+        })
+    }
+
+    
+    useEffect(() => {
+       getPosts()
     }, []);
 
     return (
@@ -47,14 +48,14 @@ export default function Home() {
                             <div className="col-xl-1" />
                             <div className="col-xl-10 col-lg-12">
                                 <Hero1 />
-                                <HotTopic />
-                                <EditorPicked />
+                                {/* <HotTopic /> */}
+                                <EditorPicked posts={posts}/>
                                 <div className="row mt-70">
                                     <div className="col-lg-8">
                                         <RecentPosts posts={posts}/>
                                     </div> 
                                     <div className="col-lg-4">
-                                        <Sidebar />
+                                        <Advertisement />
                                     </div>
                                 </div>
                             </div>
