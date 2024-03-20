@@ -44,10 +44,10 @@ const MobileMenu = ({ openClass }) => {
                                             <span className="menu-expand"><i className="fi-rr-caret-down"></i></span>
                                             <Link href="/">Home</Link>
                                         </li>
-                                        <li className={isActive.key == 1 ? "has-children active" : "has-children"} onClick={() => handleToggle(1)}>
+                                        {/* <li className={isActive.key == 1 ? "has-children active" : "has-children"} onClick={() => handleToggle(1)}>
                                             <span className="menu-expand"><i className="fi-rr-caret-down"></i></span>
                                             <Link href="/addblog">Add</Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </nav>
                             </div>
