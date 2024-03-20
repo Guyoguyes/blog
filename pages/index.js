@@ -8,14 +8,32 @@ import PopularCategories from "@/components/sections/PopularCategories"
 import RecentPosts from "@/components/sections/RecentPosts"
 import Sidebar from "@/components/layout/Sidebar"
 import HotTopic from "@/components/slider/HotTopic"
+import { db } from "@/utils/firebase";
+
+import { doc, getDoc } from 'firebase/firestore'
+
+
 
 
 export default function Home() {
     
+    const [posts, setPosts] = useState(null);
 
-    // useEffect(() => {
-        
-    // }, [info]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const userDoc = await db.collection("posts").get();
+                const data = userDoc.docs.map(doc => doc.data());
+                setPosts(data);
+                console.log(data);
+                alert('Data was successfully fetched from cloud firestore! Close this alert and check console for output.');
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -33,8 +51,8 @@ export default function Home() {
                                 <EditorPicked />
                                 <div className="row mt-70">
                                     <div className="col-lg-8">
-                                        <RecentPosts />
-                                    </div>
+                                        <RecentPosts posts={posts}/>
+                                    </div> 
                                     <div className="col-lg-4">
                                         <Sidebar />
                                     </div>
