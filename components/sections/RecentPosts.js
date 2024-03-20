@@ -34,7 +34,7 @@ const RecentPosts = ({posts}) => {
                                             ))
                                         ) : ( "")}
                                 </div>
-                                <div className="col-5 text-end"><span className="color-gray-700 text-sm timeread">{item.duration} mins read</span></div>
+                                {/* <div className="col-5 text-end"><span className="color-gray-700 text-sm timeread">{item.duration} mins read</span></div> */}
                             </div>
                         </div>
                     </div>
