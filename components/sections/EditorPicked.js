@@ -61,9 +61,7 @@ const EditorPicked = ({posts}) => {
                     )
                 ))}
             </div>
-            <div className="text-center mb-50"><Link href="#" className="btn btn-linear btn-load-more wow animate__animated animate__zoomIn">
-                Show More Posts
-                <i className="fi-rr-arrow-small-right" /></Link></div>
+            
             <div className="text-center mb-80 mt-50 wow animate__animated animate__pulse"><img src="assets/imgs/page/homepage4/banner-3.png" alt="Genz" /></div>
         </>
      );
