@@ -83,7 +83,7 @@ export default function Home() {
                                         <RecentPosts posts={posts}/>
                                     </div>
                                     <div className="col-lg-4">
-                                        <Sidebar />
+                                        <Sidebar posts={posts}/>
                                     </div>
                                 </div>
                             </div>

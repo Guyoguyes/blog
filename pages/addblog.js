@@ -1,9 +1,10 @@
 // 'use client'
 import React, { useEffect, useRef, useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+// import { Editor } from "@tinymce/tinymce-react";
 import Layout from "@/components/layout/Layout";
 import Link from 'next/link';
 import { useForm } from "react-hook-form";
+import { Editor } from 'primereact/editor';
 
 import Swal from 'sweetalert2'
 import { collection, addDoc, getDocs, doc } from "firebase/firestore";
@@ -166,47 +167,7 @@ const AddBlog = ({initialImageUrl }) => {
               </div>
             </div>
           </div>
-          <Editor
-            apiKey='7umko255qrrk86q7hqkkygkcizg6vi2fob119obv0vcklt5e'
-            onInit={(evt, editor) => (editorRef.current = editor)}
-            initialValue=""
-            init={{
-              height: 500,
-              menubar: false,
-              plugins: [
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                "image",
-                "charmap",
-                "preview",
-                "anchor",
-                "searchreplace",
-                "visualblocks",
-                "code",
-                "fullscreen",
-                "insertdatetime",
-                "media",
-                "table",
-                "code",
-                "help",
-                "wordcount",
-              ],
-              toolbar:
-                "undo redo | blocks | " +
-                "bold italic forecolor | alignleft aligncenter " +
-                "alignright alignjustify | bullist numlist outdent indent | " +
-                "removeformat | help",
-              content_style:
-                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              setup: function (editor) {
-                editor.on('change', function () {
-                  handleEditorChange(editor.getContent(), editor);
-                });
-              }
-            }}
-          />
+          <Editor value={contentInfo} onTextChange={(e) => setcontentInfoo890(e.htmlValue)} style={{ height: '320px' }} />
           <button type="submit" className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow mt-10">
             Save Blog
             <i className="fi-rr-arrow-small-right" />

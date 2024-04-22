@@ -72,6 +72,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                                     {user ? (<>
                                         <li><Link className="color-gray-500" href="/addblog">Add Blog</Link></li>
                                         <li><Link className="color-gray-500" href="/addCategory">Add Category</Link></li>
+                                        <li><Link className="color-gray-500" href="/profile">Profile</Link></li>
                                         </>): (<></>)}
                                     
                                 </ul>
@@ -84,8 +85,9 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                             </div>
                         </div>
                         <div className="header-right text-end">
-                            <Link className="btn btn-search" href="#" onClick={toggleTrueFalse} />
+                            {/* <Link className="btn btn-search" href="#" onClick={toggleTrueFalse} /> */}
                             <SwitchButton />
+                            
                             <div className={isToggled ? "form-search p-20 d-block" : " form-search p-20 d-none"}>
                                 <form action="#">
                                     <input className="form-control" type="text" placeholder="Search" />

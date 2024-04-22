@@ -11,7 +11,7 @@ const Hero2 = ({categories}) => {
                 <div className="text-center">
                     <h6 className="color-gray-600">Welcome to Masomo Guide</h6>
                     <h1 className="color-white">One<span className="color-linear"> Unique&nbsp;</span>
-                        stop<br className="d-none d-lg-block" />fo learning
+                        stop<br className="d-none d-lg-block" />for learning
                         <span className="color-linear">&nbsp;Blogs</span>
                     </h1>
                 </div>
