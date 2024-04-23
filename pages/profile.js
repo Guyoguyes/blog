@@ -1,144 +1,126 @@
-// import  from '@/components//';
+// Import necessary components
 import Layout from '@/components/layout/Layout';
-import Hero6 from '@/components/sections/Hero6';
-import React from 'react';
+import React,{useEffect, useState} from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { db, auth } from '@/firebase'
+import { collection, getDocs } from 'firebase/firestore';
 
+
+// Profile component
 const Profile = () => {
+
+  const [posts, setPosts] = useState([]);
+
+  const dbInstance = collection(db, 'posts');
+
+  const getPosts = async() => {
+    getDocs(dbInstance)
+        .then((querySnapshot) => {
+            const data = querySnapshot.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id
+            }));
+            setPosts(data);
+        })
+        .catch((error) => {
+            console.error('Error getting documents: ', error);
+        });
+};
+
+useEffect(() => {
+    getPosts();
+}, [])
+
+
   return (
     <Layout>
-        <main class="profile-page">
-      <section class="relative block h-500-px">
-        <div
-          class="absolute top-0 w-full h-full bg-center bg-cover"
-          
-        >
-          <span
-            id="blackOverlay"
-            class="w-full h-full absolute opacity-50 bg-black"
-          ></span>
-        </div>
-        <div
-          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-          
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-blueGray-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
-      </section>
-      <section class="relative py-16 bg-blueGray-200">
-        <div class="container mx-auto px-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
-          >
-            <div class="px-6">
-              <div class="flex flex-wrap justify-center">
-                <div
-                  class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center"
-                >
-                  <div class="relative">
-                    <img
-                      alt="..."
-                      src="../assets/img/team-2-800x800.jpg"
-                      class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"
-                >
-                  <div class="py-6 px-3 mt-32 sm:mt-0">
-                    <button
-                      class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      Connect
-                    </button>
-                  </div>
-                </div>
-                <div class="w-full lg:w-4/12 px-4 lg:order-1">
-                  <div class="flex justify-center py-4 lg:pt-4 pt-8">
-                    <div class="mr-4 p-3 text-center">
-                      <span
-                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
-                        >22</span
-                      ><span class="text-sm text-blueGray-400">Friends</span>
-                    </div>
-                    <div class="mr-4 p-3 text-center">
-                      <span
-                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
-                        >10</span
-                      ><span class="text-sm text-blueGray-400">Photos</span>
-                    </div>
-                    <div class="lg:mr-4 p-3 text-center">
-                      <span
-                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
-                        >89</span
-                      ><span class="text-sm text-blueGray-400">Comments</span>
+      <div className="overflow-y-auto sm:p-0 pt-4 pr-4 pb-20 pl-4 bg-gray-800">
+        <div className="flex justify-center items-end text-center min-h-screen sm:block">
+          <div className="bg-gray-500 transition-opacity bg-opacity-75"></div>
+          <span className="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+          <div className= "inline-block text-left bg-gray-900 rounded-lg overflow-hidden align-bottom transition-all transform shadow-2xl sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
+            <div className="items-center w-full mr-auto ml-auto relative max-w-7xl md:px-12 lg:px-24">
+              <div className="grid grid-cols-1">
+                <div className="mt-4 mr-auto mb-4 ml-auto bg-gray-900 max-w-lg">
+                  <div className="flex flex-col items-center pt-6 pr-6 pb-6 pl-6">
+                    <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" className="flex-shrink-0 object-cover object-center btn- flex w-8 h-8 mr-auto -mb-8 ml-auto rounded-full shadow-xl" style={{height: "150px", width: "150px", }}/>
+                    <p className="mt-2 text-2xl font-semibold leading-none text-black tracking-tighter lg:text-3xl">Mark Xenon</p>
+                    <p className="mt-3 text-base leading-relaxed text-center text-gray-200">I am a fullstack software developer with ReactJS for frontend and NodeJS for backend</p>
+                    <div className="w-full mt-6">
+                      <a className="flex text-center items-center justify-center w-full pt-4 pr-10 pb-4 pl-10 text-base font-medium text-white bg-indigo-600 rounded-xl transition duration-500 ease-in-out transform hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Hire me</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="text-center mt-12">
-                <h3
-                  class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"
-                >
-                  Jenna Stones
-                </h3>
-                <div
-                  class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase"
-                >
-                  <i
-                    class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"
-                  ></i>
-                  Los Angeles, California
-                </div>
-                <div class="mb-2 text-blueGray-600 mt-10">
-                  <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i
-                  >Solution Manager - Creative Tim Officer
-                </div>
-                <div class="mb-2 text-blueGray-600">
-                  <i
-                    class="fas fa-university mr-2 text-lg text-blueGray-400"
-                  ></i
-                  >University of Computer Science
-                </div>
-              </div>
-              <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
-                <div class="flex flex-wrap justify-center">
-                  <div class="w-full lg:w-9/12 px-4">
-                    <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                      An artist of considerable range, Jenna the name taken by
-                      Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                      performs and records all of his own music, giving it a
-                      warm, intimate feel with a solid groove structure. An
-                      artist of considerable range.
-                    </p>
-                    <a href="#pablo" class="font-normal text-pink-500"
-                      >Show more</a
-                    >
-                  </div>
-                </div>
-              </div>
+              <div className="mt-50 mb-50">
+                                    <div className="row mt-50 mb-10">
+                                        {posts.slice(0, 2).map((item, i) => (
+                                            <div className="col-lg-6" key={i}>
+                                                <div className="card-blog-1 hover-up wow animate__animated animate__fadeIn">
+                                                    <div className="card-image mb-20">
+                                                        <Link className="post-type" href="#" />
+                                                        <Link href={`/blog/${item.id}`} >
+                                                            <img src={`${item.imageUrl}`} alt="masomo guide"  style={{height:'200px',width:'300px'}}/>
+                                                        </Link>
+                                                    </div>
+                                                    <div className="card-info">
+                                                        <Link href={`/blog/${item.id}`} >
+                                                            <h4 className="color-white mt-20">{item.title} </h4>
+                                                        </Link>
+                                                        <div className="row align-items-center mt-25">
+                                                            <div className="col-7">
+                                                                <div className="box-author">
+                                                                    <img src={`assets/imgs/page/homepage1/${item.author}`} alt="masomo guide" />
+                                                                    <div className="author-info">
+                                                                        <h6 className="color-gray-700">{item.authorTitle}</h6><span className="color-gray-700 text-sm">{item.date}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-5 text-end"><Link href={`/blog/update/${item.id}`}>
+                                                                <button className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow"> Edit Article</button>
+                                                            </Link></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+
+                                        {posts.slice(2,8).map((item, i) => (
+                                            <div className="col-lg-4" key={i}>
+                                                <div className="card-blog-1 hover-up wow animate__animated animate__fadeIn">
+                                                    <div className="card-image mb-20"><Link className="post-type" href="#" />
+                                                        <Link href={`/blog/${item.id}`} ><img src={`${item.imageUrl}`} style={{height:'200px',width:'300px'}} alt="masomo guide" /></Link></div>
+                                                    <div className="card-info">
+                                                        <Link href={`/blog/${item.id}`} >
+                                                            <h5 className="color-white mt-20">{item.title}</h5></Link>
+                                                        <div className="row align-items-center mt-25">
+                                                            <div className="col-7">
+                                                                <div className="box-author">
+                                                                    <img src={`assets/imgs/page/homepage1/${item.author}`} alt="masomo guide" />
+                                                                    <div className="author-info">
+                                                                        <h6 className="color-gray-700">{item.authorTitle}</h6><span className="color-gray-700 text-sm">{item.date}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-5 text-end"><Link href={`/blog/update/${item.id}`}>
+                                                                <button className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow"> Edit Article</button>
+                                                            </Link></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {/* <Pagination /> */}
+                                </div>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
     </Layout>
-    
   );
 };
 
+// Export the Profile component
 export default Profile;

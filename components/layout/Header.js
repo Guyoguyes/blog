@@ -98,8 +98,12 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                             {user ? (<><button  className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow" onClick={handleSignOut}>Logout</button> </>):
                             (
                                 <div style={{ display: 'flex', gap: '10px' }}>
-                                        <button className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow">Sign Up</button>
-                                        <button className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow">Login</button>
+                                    <Link href='/page-signup'>
+                                        <button className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow"> Sign Up</button>
+                                    </Link>
+                                    <Link href='/page-login'>
+                                        <button className="btn btn-linear d-none d-sm-inline-block hover-up hover-shadow"> Login</button>
+                                    </Link>
                                 </div>
 
                             )}
